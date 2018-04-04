@@ -8,15 +8,26 @@ class Duplikate {
 	 * @return StringSet mit den Wörtern, welche mind. zwei mal vorkommen.
 	 */
 	static StringSet findeDuplikate(String text) {
-		StringSet s1 = new StringSetImpl();
-		StringSet s2 = new StringSetImpl();
 
-		// Satzzeichen entfernen; Vorsicht mit ? (beliebig viele) und . (jedes Zeichen)
+		// nur Zeichen und Leerzeichen zulassen
+		StringBuilder sb = new StringBuilder();
+		for (char c : text.toCharArray()) {
+			if (Character.isAlphabetic(c) || c == ' ')
+				sb.append(c);
+		}
+		text = sb.toString();
+
+		// Alternativ via reg. Ausdruck
+		/*
 		String[] satzz = {
 				"\\?", "!", ",", "\\.", ":", "'", "\"", "-"
 		};
 		for (String z : satzz)
 			text = text.replaceAll(z, "");
+		*/
+
+		StringSet s1 = new StringSetImpl();
+		StringSet s2 = new StringSetImpl();
 
 		for (String w : text.split(" ")) {
 			// kennt das erste Set das Wort bereits, so tritt es zum 2. mal auf!
