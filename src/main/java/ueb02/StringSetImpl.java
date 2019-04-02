@@ -26,23 +26,26 @@ public class StringSetImpl implements StringSet{
 
         if (root == null) {
             root = new Element(s,null,null) ;
+            counter++;
             return true;
         }
         Element it =root;
         while (it != null) {
-            if (s.equals(root.str)) {
+            if (s.equals(it.str)) {
                 return false;
             }
             if (s.compareTo(it.str) > 0) {
                 if(it.right==null){
                     it.right=new Element(s,null,null);
+                    counter++;
                     return true;
                 }else if (s.compareTo(it.str) > 0){
                     it=it.right;
-                }
-            if(s.compareTo(it.str)<0){
+                }}
+            else if(s.compareTo(it.str)<0){
                  if(it.left==null){
                      it.left =new Element(s,null,null);
+                     counter++;
                      return true;
                  }else if (s.compareTo(it.str)<0){
                      it=it.left;
@@ -51,7 +54,7 @@ public class StringSetImpl implements StringSet{
             }
 
 
-        }
+
     return false;
     }
 
@@ -80,8 +83,6 @@ public class StringSetImpl implements StringSet{
 
         @Override
         public String remove (String s){
-
-            counter--;
             return null;
         }
 

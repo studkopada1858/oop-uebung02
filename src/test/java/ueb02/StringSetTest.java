@@ -17,7 +17,6 @@ class StringSetTest {
 		}
 
 		System.out.println(impl);
-
 		// sollte sein: In Ulm und um herum
 		assertEquals(5, impl.size());
 
